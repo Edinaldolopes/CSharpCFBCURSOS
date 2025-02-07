@@ -25,9 +25,9 @@ class Aula07 {
 
             Console.WriteLine("\n....SEUS DADOS FORAM REGISTRADOS NO BANCO....\n");
 
-            // Forma correta de exibir as informações
+            
             Console.WriteLine("NOME.....:  " + nome);
-            Console.WriteLine("IDADE....:  " + idade + " anos"); // Corrigido o erro
+            Console.WriteLine("IDADE....:  " + idade + " anos"); 
             Console.WriteLine("APELIDO..:  " + apelido);
 
             Console.WriteLine("\nDeseja cadastrar outro usuário? (S/N)");
