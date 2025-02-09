@@ -6,79 +6,64 @@ class Aula12
     {
         while (true) // Loop infinito até que o usuário decida parar
         {
-            string inva="Entrada inválida! Digite um número válido para a nota: ";
-            int n1,n2,n3,n4,res;
-            res=n1=n2=n3=n4=0;
+            string mensagemErro = "\nEntrada inválida! Digite um número válido para a nota: ";
+            int n1, n2, n3, n4, res;
+            res = n1 = n2 = n3 = n4 = 0;
 
-            Console.Write("digite nota 1..: ");
-             while (!int.TryParse(Console.ReadLine(), out n1))
-            
+            // Captura das notas
+            Console.Write("\nDigite nota 1..: ");
+            while (!int.TryParse(Console.ReadLine(), out n1)) Console.Write(mensagemErro);
+
+            Console.Write("Digite nota 2..: ");
+            while (!int.TryParse(Console.ReadLine(), out n2)) Console.Write(mensagemErro);
+
+            Console.Write("Digite nota 3..: ");
+            while (!int.TryParse(Console.ReadLine(), out n3)) Console.Write(mensagemErro);
+
+            Console.Write("Digite nota 4..: ");
+            while (!int.TryParse(Console.ReadLine(), out n4)) Console.Write(mensagemErro);
+
+            res = n1 + n2 + n3 + n4;
+
+            // Verificações
+            if (res > 100)
             {
-                Console.Write(inva);
+                Console.WriteLine("\nO valor total da média não pode passar de 100. Insira as notas novamente.");
+                continue; // Reinicia o loop sem perguntar se deseja continuar
+            }
+            else if (res < 40)
+            {
+                Console.WriteLine("\nSua nota foi " + res + " e você foi REPROVADO.");
+            }
+            else if (res < 60)
+            {
+                Console.WriteLine("\nSua nota foi " + res + " e você está de RECUPERAÇÃO.");
+            }
+            else
+            {
+                Console.WriteLine("\nParabéns! Você tirou " + res + " e foi APROVADO.");
             }
 
-            Console.Write("digite nota 2..: ");
-             while (!int.TryParse(Console.ReadLine(), out n2))
-            
+            // Pergunta se deseja continuar, garantindo que o usuário insira "S" ou "N"
+            string resposta;
+            do
             {
-                Console.Write(inva);
-            }
+                Console.Write("\nDeseja informar outra nota? (S/N): ");
+                resposta = Console.ReadLine().Trim().ToUpper();
 
-            Console.Write("digite nota 3..: ");
-             while (!int.TryParse(Console.ReadLine(), out n3))
-
-            {
-                Console.Write(inva);
-            }
-
-            Console.Write("digite nota 4..: ");
-             while (!int.TryParse(Console.ReadLine(), out n4))
-
-            {
-                Console.Write(inva);
-            }
-            
-            
-            
-
-            res=n1+n2+n3+n4;
-
-            
-
-
-            if (res > 100) 
-            {
-
-                Console.WriteLine("O valor total da media nao pode passar de 100, coloque novamente as notas");
-
-            }
-
-
-            else{
-
-                   if (res >= 60)
+                if (resposta != "S" && resposta != "N")
                 {
-                    Console.WriteLine("Resultado: voçe tirou " +res+ " E foi aprovado, Parabens!!!");
-                }
-                else
-                {
-                    Console.WriteLine("Resultado: voçe tirou " +res+ " E foi Reprovado, estude mais!!! ");
+                    Console.WriteLine("\nEntrada inválida! Digite apenas 'S' para SIM ou 'N' para NÃO.");
                 }
 
-                Console.Write("\nDeseja informar outra  nota? (S/N): ");
-                string resposta = Console.ReadLine().ToUpper();
+            } while (resposta != "S" && resposta != "N");
 
-                if (resposta != "S")
-                {
-                    Console.WriteLine("Encerrando o programa...");
-                    break; // Sai do loop se o usuário não digitar "S"
-                } 
-
+            if (resposta == "N")
+            {
+                Console.WriteLine("\nEncerrando o programa...");
+                break; // Sai do loop se o usuário digitar "N"
             }
-
-            
-
-            
         }
     }
 }
+
